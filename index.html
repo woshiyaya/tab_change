@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab栏切换</title>
+    <script src="./js/jquery.min.js"></script>
+    <style>
+        *{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav{
+            width: 400px;
+            height: 50px;
+            background-color: red;
+            margin: 0 auto;
+        }
+        ul{
+            display: flex;
+        }
+        ul li{
+            flex: 1;
+            background-color: pink;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+        }
+        .content{
+            width: 400px;
+            height: 200px;
+            margin: 0 auto;
+        }
+        .content img{
+            width: 400px;
+            height: 200px;
+        }
+        .content div{
+            display: none;
+        }
+        .content .div_show{
+            display: block;
+        }
+        .tab{
+           background: #ffabdd;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </nav>
+    <div class="content">
+        <div style=" position: absolute;z-index:3" class="div_show">
+            <img src="./img/1.jpg" alt="">
+        </div>
+        <div style=" position: absolute;z-index:2">
+            <img src="./img/2.jpg" alt="">
+        </div >
+        <div style=" position: absolute;z-index:1">
+            <img src="./img/3.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        $('ul li').click(function(){
+          $(this).addClass('tab').siblings().removeClass('tab');
+        //   console.log($(this).index())
+          $('.content div').eq($(this).index()).addClass('div_show');
+          $('.content div').eq($(this).index()).siblings().removeClass('div_show')
+        })
+    </script>
+</body>
+</html>
